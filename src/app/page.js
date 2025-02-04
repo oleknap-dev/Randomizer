@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Page() {
   const [number, setNumber] = useState();
-  const [max, setMax] = useState(10);
+  const [max, setMax] = useState(100);
   const [min, setMin] = useState(0);
 
   async function randomize() {
@@ -39,13 +39,25 @@ export default function Page() {
 
   return (
     <div className="flex flex-col items-center">
-      <button onClick={() => setMax(max + 1)}>increase</button>
-      <h1>Max: {max}</h1>
-      <button onClick={() => setMax(max - 1)}>decrease</button>
-      <button onClick={() => setMin(min + 1)}>increase</button>
-      <h1>Min: {min}</h1>
-      <button onClick={() => setMin(min - 1)}>decrease</button>
-      <button onClick={randomize}>random</button>
+      <label>
+        Max:
+        <input
+          value={max}
+          type="number"
+          onChange={(e) => setMax(Number(e.target.value))}
+          className="border border-black ml-8 w-32"
+        />
+      </label>
+      <label>
+        Min:
+        <input
+          value={min}
+          type="number"
+          onChange={(e) => setMin(Number(e.target.value))}
+          className="border border-black ml-8 w-32"
+        />
+      </label>
+      <button onClick={randomize}>Generate</button>
       <h1>{number}</h1>
     </div>
   );
