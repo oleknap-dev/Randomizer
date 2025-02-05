@@ -1,10 +1,9 @@
-import RandomNumberGenerator from "./components/RandomNumberGenerator";
+import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center">
-      <h1>True random Number Generator</h1>
-      <RandomNumberGenerator />
+    <div>
+      <Link href="/random-number">Random Number Generator</Link>
     </div>
   );
 }
