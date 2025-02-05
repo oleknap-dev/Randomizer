@@ -1,9 +1,9 @@
-import Link from "next/link";
+import Tile from "./components/Tile";
 
 export default function Page() {
   return (
     <div>
-      <Link href="/random-number">Random Number Generator</Link>
+      <Tile label="Random Number" href="/random-number" />
     </div>
   );
 }
