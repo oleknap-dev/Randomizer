@@ -34,6 +34,7 @@ export default function RandomNumberGenerator() {
     });
 
     const data = await response.json();
+    console.log(data.result.random.data);
     setNumber(data.result.random.data);
   }
 
