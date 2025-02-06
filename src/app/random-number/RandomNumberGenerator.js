@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function RandomNumberGenerator() {
-  const [number, setNumber] = useState();
+  const [result, setResult] = useState();
   const [max, setMax] = useState(100);
   const [min, setMin] = useState(0);
 
@@ -14,27 +14,32 @@ export default function RandomNumberGenerator() {
       newmax = min + 1;
     }
 
-    const response = await fetch("https://api.random.org/json-rpc/4/invoke", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        method: "generateIntegers",
-        params: {
-          apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
-          n: 1,
-          min: min,
-          max: newmax,
-          base: 10,
+    try {
+      const response = await fetch("https://api.random.org/json-rpc/4/invoke", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        id: 6105,
-      }),
-    });
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          method: "generateIntegers",
+          params: {
+            apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
+            n: 1,
+            min: min,
+            max: newmax,
+            base: 10,
+          },
+          id: 6105,
+        }),
+      });
 
-    const data = await response.json();
-    setNumber(data.result.random.data);
+      const data = await response.json();
+      setResult(data.result.random.data);
+    } catch (error) {
+      console.log("Error: ", error);
+      setResult("Error");
+    }
   }
 
   return (
@@ -58,7 +63,7 @@ export default function RandomNumberGenerator() {
         />
       </label>
       <button onClick={randomize}>Generate</button>
-      <h1>{number}</h1>
+      <h1>{result}</h1>
     </div>
   );
 }
