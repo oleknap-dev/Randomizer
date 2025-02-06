@@ -17,6 +17,11 @@ export default function Page() {
           href="/coin-flip"
           image="/images/coin-flip.jpg"
         />
+        <Tile
+          label="Roll dice"
+          href="/roll-dice"
+          image="/images/roll-dice.jpg"
+        />
       </div>
     </div>
   );
