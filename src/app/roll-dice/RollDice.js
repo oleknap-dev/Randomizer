@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-export default function CoinFlip() {
+export default function RollDice() {
   const [result, setResult] = useState();
+  const [diceCount, setDiceCount] = useState(1);
 
-  async function flipCoin() {
+  async function rollDice() {
     try {
       const response = await fetch("https://api.random.org/json-rpc/4/invoke", {
         method: "POST",
@@ -17,9 +18,9 @@ export default function CoinFlip() {
           method: "generateIntegers",
           params: {
             apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
-            n: 1,
+            n: diceCount,
             min: 1,
-            max: 2,
+            max: 6,
             base: 10,
           },
           id: 6105,
@@ -27,8 +28,7 @@ export default function CoinFlip() {
       });
 
       const data = await response.json();
-      if (data.result.random.data[0] === 1) setResult("Heads");
-      if (data.result.random.data[0] === 2) setResult("Tails");
+      setResult(data.result.random.data);
     } catch (error) {
       console.log("Error: ", error);
       setResult("Error");
@@ -37,9 +37,7 @@ export default function CoinFlip() {
 
   return (
     <div>
-      <div>
-        <button onClick={flipCoin}>Flip a coin</button>
-      </div>
+      <button onClick={rollDice}>Roll a dice</button>
       {result !== undefined && <h1>{result}</h1>}
     </div>
   );
