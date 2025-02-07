@@ -64,7 +64,6 @@ export default function RandomNumberGenerator() {
       </label>
       <button onClick={generateRandomNumber}>Generate</button>
       {result !== undefined && <h1>{result}</h1>}
-      <select></select>
     </div>
   );
 }
