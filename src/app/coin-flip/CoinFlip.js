@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function CoinFlip() {
   const [result, setResult] = useState();
 
-  async function randomize() {
+  async function flipCoin() {
     try {
       const response = await fetch("https://api.random.org/json-rpc/4/invoke", {
         method: "POST",
@@ -38,7 +38,7 @@ export default function CoinFlip() {
   return (
     <div>
       <div>
-        <button onClick={randomize}>Flip a coin</button>
+        <button onClick={flipCoin}>Flip a coin</button>
       </div>
       {result !== undefined && <h1>{result}</h1>}
     </div>

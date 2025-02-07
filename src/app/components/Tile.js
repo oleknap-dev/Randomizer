@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Tile({ label, href, image }) {
   return (
-    <div className="flex relative items-center justify-center  w-80 h-48 rounded-md border border-black border-opacity-15 overflow-hidden group">
+    <div className="flex relative items-center justify-center w-80 h-48 rounded-md border border-black border-opacity-15 overflow-hidden group">
       <div
         className="w-80 h-48 bg-center bg-cover transition duration-300 ease-in-out group-hover:scale-105"
         style={{ backgroundImage: `url(${image})` }}

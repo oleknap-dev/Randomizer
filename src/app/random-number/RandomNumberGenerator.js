@@ -7,7 +7,7 @@ export default function RandomNumberGenerator() {
   const [max, setMax] = useState(100);
   const [min, setMin] = useState(0);
 
-  async function randomize() {
+  async function generateRandomNumber() {
     let newmax = max;
     if (min >= max) {
       setMax(min + 1);
@@ -62,8 +62,9 @@ export default function RandomNumberGenerator() {
           className="border border-black ml-8 w-32"
         />
       </label>
-      <button onClick={randomize}>Generate</button>
-      <h1>{result}</h1>
+      <button onClick={generateRandomNumber}>Generate</button>
+      {result !== undefined && <h1>{result}</h1>}
+      <select></select>
     </div>
   );
 }
