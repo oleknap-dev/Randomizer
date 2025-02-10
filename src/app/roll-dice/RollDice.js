@@ -35,9 +35,27 @@ export default function RollDice() {
     }
   }
 
+  const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
   return (
-    <div>
+    <div className="flex flex-col">
       <button onClick={rollDice}>Roll a dice</button>
+      <div className="flex flex-row">
+        <label>
+          Roll
+          <select
+            onChange={(e) => setDiceCount(Number(e.target.value))}
+            className="w-10"
+          >
+            {numberOfDice.map((number) => (
+              <option key={number} value={number}>
+                {number}
+              </option>
+            ))}
+          </select>
+          dice
+        </label>
+      </div>
       {result !== undefined && <h1>{result}</h1>}
     </div>
   );
