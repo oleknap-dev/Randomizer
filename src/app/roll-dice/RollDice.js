@@ -3,8 +3,19 @@
 import { useState } from "react";
 
 export default function RollDice() {
-  const [result, setResult] = useState();
   const [diceCount, setDiceCount] = useState(1);
+  const [result, setResult] = useState(Array(diceCount).fill(1));
+
+  const diceImages = [
+    "/images/dice-dots/dice-1.png",
+    "/images/dice-dots/dice-2.png",
+    "/images/dice-dots/dice-3.png",
+    "/images/dice-dots/dice-4.png",
+    "/images/dice-dots/dice-5.png",
+    "/images/dice-dots/dice-6.png",
+  ];
+
+  const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   async function rollDice() {
     try {
@@ -35,16 +46,17 @@ export default function RollDice() {
     }
   }
 
-  const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
   return (
     <div className="flex flex-col">
-      <button onClick={rollDice}>Roll a dice</button>
       <div className="flex flex-row">
         <label>
           Roll
           <select
-            onChange={(e) => setDiceCount(Number(e.target.value))}
+            onChange={(e) => {
+              const count = Number(e.target.value);
+              setDiceCount(count);
+              setResult(Array(count).fill(1));
+            }}
             className="w-10"
           >
             {numberOfDice.map((number) => (
@@ -56,7 +68,12 @@ export default function RollDice() {
           dice
         </label>
       </div>
-      {result !== undefined && <h1>{result}</h1>}
+      <button onClick={rollDice}>Roll a dice</button>
+      <div className="flex flex-row gap-1">
+        {result.map((num) => (
+          <img className="w-16" src={diceImages[num - 1]} />
+        ))}
+      </div>
     </div>
   );
 }
