@@ -2,9 +2,9 @@ import RollDice from "./RollDice";
 
 export default function Page() {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center gap-16">
       <header>
-        <h1 className="text-7xl font-bold ml-12 mt-8 mb-24">Roll The Dice</h1>
+        <h1 className="text-7xl font-bold mt-8">Roll The Dice</h1>
       </header>
       <RollDice />
     </div>

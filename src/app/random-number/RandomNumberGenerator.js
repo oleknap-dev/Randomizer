@@ -49,7 +49,9 @@ export default function RandomNumberGenerator() {
         <input
           value={max}
           type="number"
-          onChange={(e) => setMax(Number(e.target.value))}
+          onChange={(e) =>
+            setMax(e.target.value === "" ? "" : Number(e.target.value))
+          }
           className="border border-black ml-8 w-32"
         />
       </label>
@@ -58,7 +60,9 @@ export default function RandomNumberGenerator() {
         <input
           value={min}
           type="number"
-          onChange={(e) => setMin(Number(e.target.value))}
+          onChange={(e) =>
+            setMin(e.target.value === "" ? "" : Number(e.target.value))
+          }
           className="border border-black ml-8 w-32"
         />
       </label>
