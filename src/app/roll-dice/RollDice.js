@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function RollDice() {
   const [diceCount, setDiceCount] = useState(1);
   const [result, setResult] = useState(Array(diceCount).fill(1));
+  const [isRolling, setIsRolling] = useState(false);
 
   const diceImages = [
     "/images/dice-dots/dice-1.png",
@@ -18,32 +19,44 @@ export default function RollDice() {
   const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   async function rollDice() {
-    try {
-      const response = await fetch("https://api.random.org/json-rpc/4/invoke", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          method: "generateIntegers",
-          params: {
-            apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
-            n: diceCount,
-            min: 1,
-            max: 6,
-            base: 10,
-          },
-          id: 6105,
-        }),
-      });
+    const rollingInterval = setInterval(() => {
+      setResult(Array(diceCount).fill(Math.floor(Math.random() * 6) + 1));
+    }, 200);
+    setIsRolling(true);
 
-      const data = await response.json();
-      setResult(data.result.random.data);
-    } catch (error) {
-      console.log("Error: ", error);
-      setResult("Error");
-    }
+    setTimeout(async () => {
+      clearInterval(rollingInterval);
+      try {
+        const response = await fetch(
+          "https://api.random.org/json-rpc/4/invoke",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              jsonrpc: "2.0",
+              method: "generateIntegers",
+              params: {
+                apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
+                n: diceCount,
+                min: 1,
+                max: 6,
+                base: 10,
+              },
+              id: 6105,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        setResult(data.result.random.data);
+      } catch (error) {
+        console.log("Error: ", error);
+        setResult("Error");
+      }
+      setIsRolling(false);
+    }, 1200);
   }
 
   return (
@@ -58,8 +71,8 @@ export default function RollDice() {
           Roll
           <select
             className="w-12 text-xl mx-2 cursor-pointer border-2 border-black rounded-md 
-            hover:scale-105 
-            ease-in-out transition duration-200"
+              hover:scale-105 
+              ease-in-out transition duration-200"
             onChange={(e) => {
               const count = Number(e.target.value);
               setDiceCount(count);
@@ -76,9 +89,9 @@ export default function RollDice() {
         </label>
         <button
           className="w-36 h-16 text-black text-opacity-90 bg-white bg-opacity-90 rounded-lg border-2 border-black border-opacity-90
-          hover:text-opacity-100 hover:bg-opacity-100 hover:scale-105 hover:border-opacity-100
-          active:bg-opacity-75 active:scale-100 active:text-opacity-75 active:border-opacity-75
-          ease-in-out transition duration-200"
+            hover:text-opacity-100 hover:bg-opacity-100 hover:scale-105 hover:border-opacity-100
+            active:bg-opacity-75 active:scale-100 active:text-opacity-75 active:border-opacity-75
+            ease-in-out transition duration-200"
           onClick={rollDice}
         >
           Roll dice
