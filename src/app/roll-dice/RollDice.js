@@ -19,10 +19,14 @@ export default function RollDice() {
   const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   async function rollDice() {
-    const rollingInterval = setInterval(() => {
-      setResult(Array(diceCount).fill(Math.floor(Math.random() * 6) + 1));
-    }, 200);
     setIsRolling(true);
+    const rollingInterval = setInterval(() => {
+      setResult(
+        Array.from({ length: diceCount }, () =>
+          Math.floor(Math.random() * 6 + 1)
+        )
+      );
+    }, 200);
 
     setTimeout(async () => {
       clearInterval(rollingInterval);
@@ -51,11 +55,11 @@ export default function RollDice() {
 
         const data = await response.json();
         setResult(data.result.random.data);
+        setIsRolling(false);
       } catch (error) {
         console.log("Error: ", error);
         setResult("Error");
       }
-      setIsRolling(false);
     }, 1200);
   }
 
