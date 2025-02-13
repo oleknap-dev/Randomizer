@@ -15,12 +15,12 @@ export default {
       },
       keyframes: {
         flipCoin: {
-          "0%": { transform: "rotateY(0deg)" },
-          "100%": { transform: "rotateY(1800deg)" },
+          from: { transform: "rotateX(0deg)" },
+          to: { transform: "rotateX(1800deg)" },
         },
       },
       animation: {
-        flipCoin: "flipCoin 4s",
+        flipCoin: "flipCoin 4s forwards",
       },
     },
   },
