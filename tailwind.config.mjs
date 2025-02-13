@@ -1,3 +1,5 @@
+import { transform } from "next/dist/build/swc/generated-native";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -10,6 +12,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      keyframes: {
+        flipCoin: {
+          "0%": { transform: "rotateY(0deg)" },
+          "100%": { transform: "rotateY(1800deg)" },
+        },
+      },
+      animation: {
+        flipCoin: "flipCoin 4s",
       },
     },
   },
