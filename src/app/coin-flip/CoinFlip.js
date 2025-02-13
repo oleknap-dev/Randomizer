@@ -37,10 +37,19 @@ export default function CoinFlip() {
 
   return (
     <div>
-      <div>
-        <button onClick={flipCoin}>Flip a coin</button>
+      <div className="flex flex-col justify-center items-center">
+        <img className="rounded-full mb-4" src="/images/coin/heads.png"></img>
+        {result && <p className="text-xl font-semibold mb-6">{result}</p>}
+        <button
+          className="w-40 h-20 text-xl font-semibold text-black text-opacity-80 bg-white bg-opacity-80 rounded-lg border-2 border-black border-opacity-80
+            hover:text-opacity-100 hover:bg-opacity-100 hover:scale-105 hover:border-opacity-100
+            active:bg-opacity-75 active:scale-100 active:text-opacity-75 active:border-opacity-75
+            ease-in-out transition duration-200"
+          onClick={flipCoin}
+        >
+          Flip Coin
+        </button>
       </div>
-      {result !== undefined && <h1>{result}</h1>}
     </div>
   );
 }
