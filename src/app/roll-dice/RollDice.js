@@ -18,8 +18,11 @@ export default function RollDice() {
 
   const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  async function rollDice() {
+  function rollDice() {
+    if (isRolling) return;
+
     setIsRolling(true);
+
     const rollingInterval = setInterval(() => {
       setResult(
         Array.from({ length: diceCount }, () =>
