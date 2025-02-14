@@ -3,12 +3,14 @@
 import { useState } from "react";
 
 export default function CoinFlip() {
-  const [result, setResult] = useState();
+  const [result, setResult] = useState("/images/coin/heads.png");
   const [isFlipping, setIsFlipping] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   async function flipCoin() {
-    setIsFlipping(true);
     if (isFlipping) return;
+    setIsFlipping(true);
+    setFlipped(true);
 
     setTimeout(async () => {
       try {
@@ -44,22 +46,29 @@ export default function CoinFlip() {
         console.log("Error: ", error);
         setResult("Error");
       }
-    }, 4000);
+    }, 3000);
   }
 
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
-        <img
-          className={`rounded-full mb-4 ${
-            isFlipping ? "animate-flipCoin" : ""
-          }`}
-          src={result ? result : "/images/coin/heads.png"}
-        />
+        {isFlipping && (
+          <img
+            className="rounded-full mb-4 animate-flipCoin"
+            src="/images/coin/coin.png"
+          />
+        )}
+        {!isFlipping && (
+          <img
+            className="rounded-full mb-4"
+            src={result ? result : "/images/coin/heads.png"}
+          />
+        )}
         <div className="flex flex-row mb-8 gap-2">
           <div className="flex text-xl font-semibold text-center min-h-[30px]">
-            {result === "/images/coin/heads.png" && "Heads"}
-            {result === "/images/coin/tails.png" && "Tails"}
+            {flipped &&
+              !isFlipping &&
+              (result === "/images/coin/heads.png" ? "Heads" : "Tails")}
           </div>
         </div>
         <button
