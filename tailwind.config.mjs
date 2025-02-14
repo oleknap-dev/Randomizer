@@ -20,7 +20,7 @@ export default {
         },
       },
       animation: {
-        flipCoin: "flipCoin 3s ease-in forwards",
+        flipCoin: "flipCoin 3s linear forwards",
       },
     },
   },
