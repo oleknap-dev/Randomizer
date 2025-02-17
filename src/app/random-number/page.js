@@ -2,9 +2,11 @@ import RandomNumberGenerator from "./RandomNumberGenerator";
 
 export default function Page() {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center gap-16">
       <header>
-        <h1 className="text-7xl font-bold ml-12 mt-8 mb-24">Random Number</h1>
+        <h1 className="text-6xl font-bold mt-8">
+          True Random Number Generator
+        </h1>
       </header>
       <RandomNumberGenerator />
     </div>
