@@ -1,4 +1,5 @@
 import RandomNumberGenerator from "./RandomNumberGenerator";
+import BackToMainPage from "../components/BackToMainPage";
 
 export default function Page() {
   return (
@@ -9,6 +10,7 @@ export default function Page() {
         </h1>
       </header>
       <RandomNumberGenerator />
+      <BackToMainPage />
     </div>
   );
 }

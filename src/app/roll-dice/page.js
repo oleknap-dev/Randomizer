@@ -1,4 +1,5 @@
 import RollDice from "./RollDice";
+import BackToMainPage from "../components/BackToMainPage";
 
 export default function Page() {
   return (
@@ -7,6 +8,7 @@ export default function Page() {
         <h1 className="text-7xl font-bold mt-8">Roll The Dice</h1>
       </header>
       <RollDice />
+      <BackToMainPage />
     </div>
   );
 }
