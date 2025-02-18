@@ -7,7 +7,7 @@ export default function CoinFlip() {
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipped, setFlipped] = useState(false);
 
-  async function flipCoin() {
+  function flipCoin() {
     if (isFlipping) return;
     setIsFlipping(true);
     setFlipped(true);
@@ -46,12 +46,12 @@ export default function CoinFlip() {
         console.log("Error: ", error);
         setResult("Error");
       }
-    }, 2800);
+    }, 2000);
   }
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center w-96 h-96">
+      <div className="flex flex-col justify-center items-center">
         {isFlipping && (
           <img
             className="w-48 rounded-full mb-4 animate-flipCoin"

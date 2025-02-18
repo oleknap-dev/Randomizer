@@ -44,9 +44,9 @@ export default function RandomNumberGenerator() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <label className="text-2xl flex items-center">
-        <span className="w-12 text-right">Max:</span>
+    <div className="flex flex-col items-start gap-6">
+      <div className="text-2xl flex items-center">
+        <span className="w-12 pointer-events-none">Max:</span>
         <input
           value={max}
           type="number"
@@ -55,10 +55,10 @@ export default function RandomNumberGenerator() {
           }
           className="border border-black ml-2 w-32 h-8 text-2xl rounded-md hover:cursor-pointer hover:scale-105 ease-in-out transition duration-200"
         />
-      </label>
+      </div>
 
-      <label className="text-2xl flex items-center">
-        <span className="w-12 text-right">Min:</span>
+      <div className="text-2xl flex items-center">
+        <span className="w-12">Min:</span>
         <input
           value={min}
           type="number"
@@ -67,10 +67,10 @@ export default function RandomNumberGenerator() {
           }
           className="border border-black ml-2 w-32 h-8 text-2xl rounded-md hover:cursor-pointer hover:scale-105 ease-in-out transition duration-200"
         />
-      </label>
+      </div>
 
       <button
-        className="w-32 h-12 mt-4 text-lg font-semibold text-black text-opacity-80 bg-white bg-opacity-80 rounded-lg border-2 border-black border-opacity-80
+        className="w-32 h-12  text-lg font-semibold text-black text-opacity-80 bg-white bg-opacity-80 rounded-lg border-2 border-black border-opacity-80
             hover:text-opacity-100 hover:bg-opacity-100 hover:scale-105 hover:border-opacity-100
             active:bg-opacity-75 active:scale-100 active:text-opacity-75 active:border-opacity-75
             ease-in-out transition duration-200"
@@ -78,8 +78,8 @@ export default function RandomNumberGenerator() {
       >
         Generate
       </button>
-      <div className="flex gap-2">
-        <p className="text-2xl">Result:</p>
+      <div className="flex gap-2 items-start">
+        <p className="text-2xl ">Result:</p>
         <p className="text-2xl font-bold">{result}</p>
       </div>
     </div>
