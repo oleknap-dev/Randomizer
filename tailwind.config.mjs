@@ -16,11 +16,11 @@ export default {
       keyframes: {
         flipCoin: {
           from: { transform: "rotateX(0deg)" },
-          to: { transform: "rotateX(1440deg)" },
+          to: { transform: "rotateX(1080deg)" },
         },
       },
       animation: {
-        flipCoin: "flipCoin 3s linear forwards",
+        flipCoin: "flipCoin 2s linear forwards",
       },
     },
   },

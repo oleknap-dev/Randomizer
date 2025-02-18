@@ -7,7 +7,7 @@ export default function CoinFlip() {
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipped, setFlipped] = useState(false);
 
-  async function flipCoin() {
+  function flipCoin() {
     if (isFlipping) return;
     setIsFlipping(true);
     setFlipped(true);
@@ -46,7 +46,7 @@ export default function CoinFlip() {
         console.log("Error: ", error);
         setResult("Error");
       }
-    }, 3000);
+    }, 2000);
   }
 
   return (
@@ -54,17 +54,17 @@ export default function CoinFlip() {
       <div className="flex flex-col justify-center items-center">
         {isFlipping && (
           <img
-            className="rounded-full mb-4 animate-flipCoin"
+            className="w-48 rounded-full mb-4 animate-flipCoin"
             src="/images/coin/coin.png"
           />
         )}
         {!isFlipping && (
           <img
-            className="rounded-full mb-4"
+            className="w-48 rounded-full mb-4"
             src={result ? result : "/images/coin/heads.png"}
           />
         )}
-        <div className="flex flex-row mb-8 gap-2">
+        <div className="flex flex-row mb-4 gap-2">
           <div className="flex text-xl font-semibold text-center min-h-[30px]">
             {flipped &&
               !isFlipping &&
@@ -72,7 +72,7 @@ export default function CoinFlip() {
           </div>
         </div>
         <button
-          className=" w-40 h-20 text-xl font-semibold text-black text-opacity-80 bg-white bg-opacity-80 rounded-lg border-2 border-black border-opacity-80
+          className="w-40 h-20 text-xl font-semibold text-black text-opacity-80 bg-white bg-opacity-80 rounded-lg border-2 border-black border-opacity-80
             hover:text-opacity-100 hover:bg-opacity-100 hover:scale-105 hover:border-opacity-100
             active:bg-opacity-75 active:scale-100 active:text-opacity-75 active:border-opacity-75
             ease-in-out transition duration-200"
