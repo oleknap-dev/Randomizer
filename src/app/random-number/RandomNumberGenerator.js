@@ -4,43 +4,52 @@ import { useState } from "react";
 
 export default function RandomNumberGenerator() {
   const [result, setResult] = useState();
-  const [isGenerating, setIsGenerating] = useState();
+  const [isGenerating, setIsGenerating] = useState(false);
   const [max, setMax] = useState(100);
   const [min, setMin] = useState(0);
 
-  async function generateRandomNumber() {
+  function generateRandomNumber() {
+    if (isGenerating) return;
+    setIsGenerating(true);
+
     let newmax = max;
     if (min >= max) {
       setMax(min + 1);
       newmax = min + 1;
     }
 
-    try {
-      const response = await fetch("https://api.random.org/json-rpc/4/invoke", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          method: "generateIntegers",
-          params: {
-            apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
-            n: 1,
-            min: min,
-            max: newmax,
-            base: 10,
-          },
-          id: 6105,
-        }),
-      });
-
-      const data = await response.json();
-      setResult(data.result.random.data);
-    } catch (error) {
-      console.log("Error: ", error);
-      setResult("Error");
-    }
+    setTimeout(async () => {
+      try {
+        const response = await fetch(
+          "https://api.random.org/json-rpc/4/invoke",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              jsonrpc: "2.0",
+              method: "generateIntegers",
+              params: {
+                apiKey: "845658bd-ca8c-4406-842f-a364b43c5f6a",
+                n: 1,
+                min: min,
+                max: newmax,
+                base: 10,
+              },
+              id: 6105,
+            }),
+          }
+        );
+        const data = await response.json();
+        setResult(data.result.random.data);
+        setIsGenerating(false);
+      } catch (error) {
+        console.log("Error: ", error);
+        setResult("Error");
+        setIsGenerating(false);
+      }
+    }, 1000);
   }
 
   return (
@@ -80,7 +89,10 @@ export default function RandomNumberGenerator() {
       </button>
       <div className="flex gap-2 items-start">
         <p className="text-2xl ">Result:</p>
-        <p className="text-2xl font-bold">{result}</p>
+        {!isGenerating && <p className="text-2xl font-bold">{result}</p>}
+        {isGenerating && (
+          <img src="/images/loading.png" className="w-8 animate-spin" />
+        )}
       </div>
     </div>
   );
