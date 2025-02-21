@@ -2,7 +2,7 @@
 
 ## 📌 Description
 
-Randomizer is a web application built with React 19 and TailwindCSS 3.4.1, utilizing the RANDOM.ORG API to generate truly random values.
+Randomizer is a web application built with Next.js 15, React 19, and TailwindCSS 3.4.1, utilizing the RANDOM.ORG API to generate truly random values.
 
 ## ✨ Features
 
@@ -13,6 +13,8 @@ Randomizer is a web application built with React 19 and TailwindCSS 3.4.1, utili
 🪙 **Coin Flip** – Flips a virtual coin to get heads or tails.
 
 ## 🛠 Tech Stack
+
+**Framework:** Next.js 15
 
 **Frontend:** React 19, TailwindCSS 3.4.1
 
