@@ -16,7 +16,7 @@ export default function Page() {
           <Tile
             label="Coin flip"
             href="/coin-flip"
-            image="/images/coin-flip.png"
+            image="/images/coin-flip.PNG"
           />
           <Tile
             label="Roll dice"
