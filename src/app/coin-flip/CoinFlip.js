@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function CoinFlip() {
-  const [result, setResult] = useState("/images/coin/heads.png");
+  const [result, setResult] = useState("/images/coin/heads.webp");
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipped, setFlipped] = useState(false);
 
@@ -38,9 +38,9 @@ export default function CoinFlip() {
 
         const data = await response.json();
         if (data.result.random.data[0] === 1)
-          setResult("/images/coin/heads.png");
+          setResult("/images/coin/heads.webp");
         if (data.result.random.data[0] === 2)
-          setResult("/images/coin/tails.png");
+          setResult("/images/coin/tails.webp");
         setIsFlipping(false);
       } catch (error) {
         console.log("Error: ", error);
@@ -55,20 +55,20 @@ export default function CoinFlip() {
         {isFlipping && (
           <img
             className="w-48 rounded-full mb-4 animate-flipCoin"
-            src="/images/coin/coin.png"
+            src="/images/coin/coin.webp"
           />
         )}
         {!isFlipping && (
           <img
             className="w-48 rounded-full mb-4"
-            src={result ? result : "/images/coin/heads.png"}
+            src={result ? result : "/images/coin/heads.webp"}
           />
         )}
         <div className="flex flex-row mb-4 gap-2">
           <div className="flex text-xl font-semibold text-center min-h-[30px]">
             {flipped &&
               !isFlipping &&
-              (result === "/images/coin/heads.png" ? "Heads" : "Tails")}
+              (result === "/images/coin/heads.webp" ? "Heads" : "Tails")}
           </div>
         </div>
         <button

@@ -11,17 +11,17 @@ export default function Page() {
           <Tile
             label="Random Number"
             href="/random-number"
-            image="/images/random-numbers.jpg"
+            image="/images/random-numbers.webp"
           />
           <Tile
             label="Coin flip"
             href="/coin-flip"
-            image="/images/coin-flip.PNG"
+            image="/images/coin-flip.webp"
           />
           <Tile
             label="Roll dice"
             href="/roll-dice"
-            image="/images/roll-dice.jpg"
+            image="/images/roll-dice.webp"
           />
         </div>
       </div>

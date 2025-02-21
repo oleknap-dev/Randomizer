@@ -8,12 +8,12 @@ export default function RollDice() {
   const [isRolling, setIsRolling] = useState(false);
 
   const diceImages = [
-    "/images/dice-dots/dice-1.png",
-    "/images/dice-dots/dice-2.png",
-    "/images/dice-dots/dice-3.png",
-    "/images/dice-dots/dice-4.png",
-    "/images/dice-dots/dice-5.png",
-    "/images/dice-dots/dice-6.png",
+    "/images/dice-dots/dice-1.webp",
+    "/images/dice-dots/dice-2.webp",
+    "/images/dice-dots/dice-3.webp",
+    "/images/dice-dots/dice-4.webp",
+    "/images/dice-dots/dice-5.webp",
+    "/images/dice-dots/dice-6.webp",
   ];
 
   const numberOfDice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

@@ -91,7 +91,7 @@ export default function RandomNumberGenerator() {
         <p className="text-2xl ">Result:</p>
         {!isGenerating && <p className="text-2xl font-bold">{result}</p>}
         {isGenerating && (
-          <img src="/images/loading.png" className="w-8 animate-spin" />
+          <img src="/images/loading.webp" className="w-8 animate-spin" />
         )}
       </div>
     </div>
