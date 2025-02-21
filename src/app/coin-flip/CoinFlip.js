@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function CoinFlip() {
   const [result, setResult] = useState("/images/coin/heads.webp");
@@ -53,15 +54,23 @@ export default function CoinFlip() {
     <div>
       <div className="flex flex-col justify-center items-center">
         {isFlipping && (
-          <img
-            className="w-48 rounded-full mb-4 animate-flipCoin"
+          <Image
+            className="rounded-full mb-4 animate-flipCoin"
             src="/images/coin/coin.webp"
+            width={192}
+            height={192}
+            alt="Flipping coin"
+            priority
           />
         )}
         {!isFlipping && (
-          <img
-            className="w-48 rounded-full mb-4"
+          <Image
+            className="rounded-full mb-4"
             src={result ? result : "/images/coin/heads.webp"}
+            width={192}
+            height={192}
+            alt="Coin result"
+            priority
           />
         )}
         <div className="flex flex-row mb-4 gap-2">

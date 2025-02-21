@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function RollDice() {
   const [diceCount, setDiceCount] = useState(1);
@@ -70,7 +71,15 @@ export default function RollDice() {
     <div className="flex flex-col text-2xl gap-10">
       <div className="flex flex-row justify-center gap-1">
         {result.map((num, id) => (
-          <img key={id} className="w-20 rounded-xl" src={diceImages[num - 1]} />
+          <Image
+            key={id}
+            className="w-20 rounded-xl"
+            src={diceImages[num - 1]}
+            width={80}
+            height={80}
+            alt={`Dice ${num}`}
+            priority
+          />
         ))}
       </div>
       <div className="flex flex-col justify-center items-center gap-6">
