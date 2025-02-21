@@ -18,9 +18,10 @@ Randomizer is a web application built with React 19 and TailwindCSS 3.4.1, utili
 
 **API:** RANDOM.ORG API
 
+**Deployment:** Vercel
+
 ## 🚀 Try It
 
-**Link:** 
+⚠️ Images may load slightly slower on Vercel due to caching and CDN behavior.
 
-
-
+**Link:** https://randomizer-beta-peach.vercel.app/
